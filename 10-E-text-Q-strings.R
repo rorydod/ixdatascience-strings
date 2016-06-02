@@ -24,27 +24,34 @@ frankenstein = c(
 # Exercise 1 ----------------------------------------------------------------------------------------------------------
 
 # Concatenate the text from frankenstein. Try a few ways of doing this.
-#
+Frankenstein <- str_c(frankenstein, collapse = " ")
 # Store the result in Frankenstein.
 
 # Exercise 2 ----------------------------------------------------------------------------------------------------------
 
 # Split nonsense on line breaks. Remove excess white space from each line. Reassemble the text as a single string.
 # Store the result as Nonsense.
-
+Nonsense <- str_split(nonsense,"\n")
+Nonsense <- unlist(Nonsense)
+Nonsense <- str_trim(Nonsense)
+Nonsense <- str_c(Nonsense)
 # Exercise 3 ----------------------------------------------------------------------------------------------------------
 
 # Count the number of times that the word "me" appears in Frankenstein. Resist the urge to do this manually!
+str_count(Frankenstein, pattern = "\\bme\\b")
 
 # Exercise 4 ----------------------------------------------------------------------------------------------------------
 
 # Find the position of the word "courage" in Frankenstein.
+str_locate(Frankenstein, "\\b[Cc]ourage\\b")
 # Find the positions of all occurrences of the word "own" in Frankenstein.
+str_locate_all(Frankenstein, "\\[Oo]wn\\b")
 
 # Exercise 5 ----------------------------------------------------------------------------------------------------------
 
 # In Nonsense replace every occurrence of "Bee" with "Donkey".
-
+str_replace_all(Nonsense, "\\bBee\\b", "Donkey")
 # Exercise 6 ----------------------------------------------------------------------------------------------------------
 
 # Wrap the Frankenstein text into a paragraph with at most 80 characters per line.
+cat(str_wrap(Frankenstein, width = 80))
